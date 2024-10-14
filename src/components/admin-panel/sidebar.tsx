@@ -42,12 +42,10 @@ export function Sidebar() {
 						<h1
 							className={cn(
 								"font-bold text-xl whitespace-nowrap transition-[transform,opacity,display] ease-in-out duration-300",
-								sidebar?.isOpen === false
-									? "-translate-x-96 opacity-0 hidden"
-									: "translate-x-0 opacity-100"
+								sidebar?.isOpen === false ? "-translate-x-96 opacity-0 hidden" : "translate-x-0 opacity-100"
 							)}
 						>
-							{SETTINGS.GENERAL.NAME_PROJECT}
+							{SETTINGS.general.name_project}
 						</h1>
 					</Link>
 				</Button>

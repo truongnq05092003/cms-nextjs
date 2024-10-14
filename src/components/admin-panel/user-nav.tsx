@@ -72,7 +72,7 @@ export function UserNav() {
 							className="flex items-center"
 						>
 							<User className="w-4 h-4 mr-3 text-muted-foreground" />
-							{SETTINGS.GENERAL.ACCOUNT}
+							{SETTINGS.general.account}
 						</Link>
 					</DropdownMenuItem>
 				</DropdownMenuGroup>
@@ -82,7 +82,7 @@ export function UserNav() {
 					onClick={() => {}}
 				>
 					<LogOut className="w-4 h-4 mr-3 text-muted-foreground" />
-					{SETTINGS.GENERAL.LOGOUT}
+					{SETTINGS.general.logout}
 				</DropdownMenuItem>
 			</DropdownMenuContent>
 		</DropdownMenu>

@@ -70,9 +70,7 @@ export function Menu({ isOpen }: MenuProps) {
 															<p
 																className={cn(
 																	"max-w-[200px] truncate",
-																	isOpen === false
-																		? "-translate-x-96 opacity-0"
-																		: "translate-x-0 opacity-100"
+																	isOpen === false ? "-translate-x-96 opacity-0" : "translate-x-0 opacity-100"
 																)}
 															>
 																{label}
@@ -80,9 +78,7 @@ export function Menu({ isOpen }: MenuProps) {
 														</Link>
 													</Button>
 												</TooltipTrigger>
-												{isOpen === false && (
-													<TooltipContent side="right">{label}</TooltipContent>
-												)}
+												{isOpen === false && <TooltipContent side="right">{label}</TooltipContent>}
 											</Tooltip>
 										</TooltipProvider>
 									</div>
@@ -103,7 +99,7 @@ export function Menu({ isOpen }: MenuProps) {
 							)}
 						</li>
 					))}
-					<li className="w-full grow flex items-end">
+					{/* <li className="w-full grow flex items-end">
 						<TooltipProvider disableHoverableContent>
 							<Tooltip delayDuration={100}>
 								<TooltipTrigger asChild>
@@ -115,22 +111,15 @@ export function Menu({ isOpen }: MenuProps) {
 										<span className={cn(isOpen === false ? "" : "mr-4")}>
 											<LogOut size={18} />
 										</span>
-										<p
-											className={cn(
-												"whitespace-nowrap",
-												isOpen === false ? "opacity-0 hidden" : "opacity-100"
-											)}
-										>
-											{SETTINGS.GENERAL.LOGOUT}
+										<p className={cn("whitespace-nowrap", isOpen === false ? "opacity-0 hidden" : "opacity-100")}>
+											{SETTINGS.general.logout}
 										</p>
 									</Button>
 								</TooltipTrigger>
-								{isOpen === false && (
-									<TooltipContent side="right">{SETTINGS.GENERAL.LOGOUT}</TooltipContent>
-								)}
+								{isOpen === false && <TooltipContent side="right">{SETTINGS.general.logout}</TooltipContent>}
 							</Tooltip>
 						</TooltipProvider>
-					</li>
+					</li> */}
 				</ul>
 			</nav>
 		</ScrollArea>

@@ -32,18 +32,18 @@ export default function LoginPage() {
 
 		if (isNullOrEmpty(email) || isNullOrEmpty(email.trim())) {
 			hasErr = true;
-			setEmailErr(SETTINGS.AUTH.ERR_EMAIL_REQUIRED);
+			setEmailErr(SETTINGS.auth.err_email_required);
 		} else if (!isEmail(email)) {
 			hasErr = true;
-			setEmailErr(SETTINGS.AUTH.ERR_EMAIL_VALID);
+			setEmailErr(SETTINGS.auth.err_email_valid);
 		}
 
 		if (isNullOrEmpty(password) || isNullOrEmpty(password.trim())) {
 			hasErr = true;
-			setPasswordErr(SETTINGS.AUTH.ERR_PASSWORD_REQUIRED);
+			setPasswordErr(SETTINGS.auth.err_password_required);
 		} else if ((password.trim() || []).length < 7) {
 			hasErr = true;
-			setPasswordErr(SETTINGS.AUTH.ERR_PASSWORD_LIMIT_6);
+			setPasswordErr(SETTINGS.auth.err_password_limit_6);
 		}
 
 		return hasErr;
@@ -61,24 +61,29 @@ export default function LoginPage() {
 	};
 
 	return (
-		<form className="px-6 py-8 rounded-[20px] w-[380px] max-w-full bg-[#262630]">
+		<form className="px-6 py-8 rounded-[20px] w-[calc(100vw-48px)] md:w-[500px] bg-white backdrop-blur-sm shadow">
+			<div className="mb-6">
+				<h1 className="text-2xl ">Chào mừng tới Saymee CMS</h1>
+				<p>Nhà mạng ảo dành cho gen Z</p>
+			</div>
+
 			<div className="relative">
 				<Input
 					value={email}
 					onChange={handleChangeEmail}
 					id="email"
 					name="email"
-					type="email"
+					type="text"
 					placeholder=""
 					autoComplete="off"
 					aria-describedby="outlined_error_help"
-					className="peer pt-3 pb-0 h-[54px] text-sm text-white bg-[#363648] focus-visible:ring-0 rounded-lg border-none outline-none placeholder:text-sm placeholder:text-[#828295]"
+					className="peer pt-3 pb-0 h-[54px] text-sm text-black focus-visible:ring-0 rounded-lg border-none outline-none placeholder:text-sm placeholder:text-[#828295] shadow"
 				/>
 				<label
 					htmlFor="email"
-					className="absolute text-sm text-[#828295] duration-300 transform -translate-y-3 scale-75 top-4 z-10 origin-[0] start-2.5 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
+					className="absolute text-sm text-black duration-300 transform -translate-y-3 scale-75 top-4 z-10 origin-[0] start-2.5 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
 				>
-					{SETTINGS.AUTH.LABEL_EMAIL}
+					{SETTINGS.auth.label_email}
 				</label>
 
 				{emailErr && (
@@ -100,13 +105,13 @@ export default function LoginPage() {
 					type="password"
 					placeholder=""
 					autoComplete="off"
-					className="peer pt-3 pb-0 h-[54px] text-sm text-white bg-[#363648] focus-visible:ring-0 rounded-lg border-none outline-none placeholder:text-sm placeholder:text-[#828295]"
+					className="peer pt-3 pb-0 h-[54px] text-sm text-black shadow focus-visible:ring-0 rounded-lg border-none outline-none placeholder:text-sm placeholder:text-[#828295]"
 				/>
 				<label
 					htmlFor="password"
-					className="absolute text-sm text-[#828295] duration-300 transform -translate-y-3 scale-75 top-4 z-10 origin-[0] start-2.5 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
+					className="absolute text-sm text-black duration-300 transform -translate-y-3 scale-75 top-4 z-10 origin-[0] start-2.5 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
 				>
-					{SETTINGS.AUTH.LABEL_PASSWORD}
+					{SETTINGS.auth.label_password}
 				</label>
 				{passwordErr && (
 					<p
@@ -124,7 +129,7 @@ export default function LoginPage() {
 					className="px-10 h-11 rounded-full bg-white text-[#000000] hover:bg-white"
 					onClick={handleSubmit}
 				>
-					{SETTINGS.GENERAL.LOGIN}
+					{SETTINGS.general.login}
 				</Button>
 			</div>
 		</form>
