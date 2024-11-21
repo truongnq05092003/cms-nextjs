@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 	),
 	title: "shadcn/ui sidebar",
 	description:
-		"A stunning and functional retractable sidebar for Next.js built on top of shadcn/ui complete with desktop and mobile responsiveness.",
+		"A stunning and retractable sidebar for Next.js built on top of shadcn/ui complete with desktop and mobile responsiveness.",
 	alternates: {
 		canonical: "/",
 	},
