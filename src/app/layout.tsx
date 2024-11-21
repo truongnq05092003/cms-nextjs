@@ -40,7 +40,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html
-			lang="en"
+			lang="vi"
 			suppressHydrationWarning={true}
 		>
 			<body>

@@ -2,7 +2,9 @@
 
 import * as React from "react";
 
+import { cn } from "@/lib/utils";
 import NextImg from "@/components/common/next-img";
+import { Boxes } from "@/components/ui/background-boxes";
 
 interface IProps {
 	children: React.ReactNode;
@@ -12,11 +14,11 @@ export default function AuthLayout({ children }: IProps) {
 	return (
 		<div className="flex items-center justify-center w-full min-h-screen relative bg-white">
 			<div className="w-full h-full absolute z-10">
-				<NextImg
+				{/* <NextImg
 					src="/assets/image/auth-bg.png"
 					alt="Next CMS"
 					objectFit="cover"
-				/>
+				/> */}
 			</div>
 
 			<div className="absolute z-20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">

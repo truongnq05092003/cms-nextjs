@@ -10,84 +10,58 @@ type Menu = {
 	href: string;
 	label: string;
 	active: boolean;
-	icon: LucideIcon;
+	icon: string;
 	submenus: Submenu[];
 };
 
-type Group = {
-	groupLabel: string;
-	menus: Menu[];
-};
-
-export function getMenuList(pathname: string): Group[] {
+export function getMenuList(pathname: string): Menu[] {
 	return [
 		{
-			groupLabel: "",
-			menus: [
+			href: "/dashboard",
+			label: "Dashboard",
+			active: pathname.includes("/dashboard"),
+			icon: "mdi:view-dashboard",
+			submenus: [],
+		},
+		{
+			href: "",
+			label: "Quản lý bài viết",
+			active: pathname.includes("/posts"),
+			icon: "mdi:view-dashboard",
+			submenus: [
 				{
-					href: "/dashboard",
-					label: "Dashboard",
-					active: pathname.includes("/dashboard"),
-					icon: LayoutGrid,
-					submenus: [],
+					href: "/posts",
+					label: "Danh sách bài viết",
+					active: pathname === "/posts",
+				},
+				{
+					href: "/posts/new",
+					label: "Bài viết mới nhất",
+					active: pathname === "/posts/new",
 				},
 			],
 		},
 		{
-			groupLabel: "Danh mục",
-			menus: [
-				{
-					href: "",
-					label: "Quản lý bài viết",
-					active: pathname.includes("/posts"),
-					icon: SquarePen,
-					submenus: [
-						{
-							href: "/posts",
-							label: "Danh sách bài viết",
-							active: pathname === "/posts",
-						},
-						{
-							href: "/posts/new",
-							label: "Bài viết mới nhất",
-							active: pathname === "/posts/new",
-						},
-					],
-				},
-				{
-					href: "/categories",
-					label: "Danh mục bài viết",
-					active: pathname.includes("/categories"),
-					icon: Bookmark,
-					submenus: [],
-				},
-				{
-					href: "/tags",
-					label: "Tags",
-					active: pathname.includes("/tags"),
-					icon: Tag,
-					submenus: [],
-				},
-			],
+			href: "/categories",
+			label: "Danh mục bài viết",
+			active: pathname.includes("/categories"),
+			icon: "mdi:view-dashboard",
+			submenus: [],
+		},
+
+		{
+			href: "/users",
+			label: "Quản lý người dùng",
+			active: pathname.includes("/users"),
+			icon: "mdi:account-group",
+			submenus: [],
 		},
 		{
-			groupLabel: "Hệ thống",
-			menus: [
-				{
-					href: "/users",
-					label: "Quản lý người dùng",
-					active: pathname.includes("/users"),
-					icon: Users,
-					submenus: [],
-				},
-				{
-					href: "/account",
-					label: "Cấu hình hệ thống",
-					active: pathname.includes("/account"),
-					icon: Settings,
-					submenus: [],
-				},
-			],
+			href: "/account",
+			label: "Cấu hình hệ thống",
+			active: pathname.includes("/account"),
+			icon: "mdi:settings",
+			submenus: [],
 		},
 	];
 }

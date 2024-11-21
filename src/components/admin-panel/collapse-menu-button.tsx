@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { ChevronRight, Dot, LucideIcon } from "lucide-react";
+import { Icon } from "@iconify/react";
+import { ChevronRight, Dot } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -25,14 +26,14 @@ type Submenu = {
 };
 
 interface CollapseMenuButtonProps {
-	icon: LucideIcon;
+	icon: string;
 	label: string;
 	active: boolean;
 	submenus: Submenu[];
 	isOpen: boolean | undefined;
 }
 
-export function CollapseMenuButton({ icon: Icon, label, active, submenus, isOpen }: CollapseMenuButtonProps) {
+export function CollapseMenuButton({ icon, label, active, submenus, isOpen }: CollapseMenuButtonProps) {
 	const isSubmenuActive = submenus.some((submenu) => submenu.active);
 	const [isCollapsed, setIsCollapsed] = useState<boolean>(isSubmenuActive);
 
@@ -53,7 +54,11 @@ export function CollapseMenuButton({ icon: Icon, label, active, submenus, isOpen
 					<div className="w-full items-center flex justify-between">
 						<div className="flex items-center">
 							<span className="mr-4">
-								<Icon size={18} />
+								<Icon
+									icon={icon}
+									width="20"
+									height="20"
+								/>
 							</span>
 							<p
 								className={cn(
@@ -64,12 +69,7 @@ export function CollapseMenuButton({ icon: Icon, label, active, submenus, isOpen
 								{label}
 							</p>
 						</div>
-						<div
-							className={cn(
-								"whitespace-nowrap",
-								isOpen ? "translate-x-0 opacity-100" : "-translate-x-2 opacity-0"
-							)}
-						>
+						<div className={cn("whitespace-nowrap", isOpen ? "translate-x-0 opacity-100" : "-translate-x-2 opacity-0")}>
 							<ChevronRight
 								size={16}
 								className="transition-transform duration-300"
@@ -88,7 +88,11 @@ export function CollapseMenuButton({ icon: Icon, label, active, submenus, isOpen
 					>
 						<Link href={href}>
 							<span className="mr-4">
-								<Dot size={18} />
+								<Icon
+									icon="mdi:dot"
+									width="20"
+									height="20"
+								/>
 							</span>
 							<p
 								className={cn(
@@ -116,14 +120,13 @@ export function CollapseMenuButton({ icon: Icon, label, active, submenus, isOpen
 								<div className="w-full items-center flex justify-between">
 									<div className="flex items-center">
 										<span className={cn(isOpen === false ? "" : "mr-4")}>
-											<Icon size={18} />
+											<Icon
+												icon={icon}
+												width="20"
+												height="20"
+											/>
 										</span>
-										<p
-											className={cn(
-												"max-w-[200px] truncate",
-												isOpen === false ? "opacity-0" : "opacity-100"
-											)}
-										>
+										<p className={cn("max-w-[200px] truncate", isOpen === false ? "opacity-0" : "opacity-100")}>
 											{label}
 										</p>
 									</div>

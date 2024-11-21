@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+const { default: flattenColorPalette } = require("tailwindcss/lib/util/flattenColorPalette");
 
 const config = {
 	darkMode: ["class"],
@@ -76,16 +77,35 @@ const config = {
 					from: { height: "var(--radix-collapsible-content-height)" },
 					to: { height: "0" },
 				},
+				meteor: {
+					"0%": { transform: "rotate(215deg) translateX(0)", opacity: "1" },
+					"70%": { opacity: "1" },
+					"100%": {
+						transform: "rotate(215deg) translateX(-500px)",
+						opacity: "0",
+					},
+				},
 			},
 			animation: {
 				"accordion-down": "accordion-down 0.3s ease",
 				"accordion-up": "accordion-up 0.3s ease",
 				"collapsible-down": "collapsible-down 0.3s ease",
 				"collapsible-up": "collapsible-up 0.3s ease",
+				"meteor-effect": "meteor 5s linear infinite",
 			},
 		},
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [require("tailwindcss-animate"), addVariablesForColors],
 } satisfies Config;
+
+// This plugin adds each Tailwind color as a global CSS variable, e.g. var(--gray-200).
+function addVariablesForColors({ addBase, theme }: any) {
+	let allColors = flattenColorPalette(theme("colors"));
+	let newVars = Object.fromEntries(Object.entries(allColors).map(([key, val]) => [`--${key}`, val]));
+
+	addBase({
+		":root": newVars,
+	});
+}
 
 export default config;

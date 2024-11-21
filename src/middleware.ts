@@ -27,6 +27,6 @@ export async function middleware(request: NextRequest) {
 	}
 }
 
-// export const config = {
-// 	matcher: ["/dang-nhap", "/dang-xuat", "/dashboard"],
-// };
+export const config = {
+	matcher: ["/dang-nhap", "/dang-xuat", "/dashboard"],
+};

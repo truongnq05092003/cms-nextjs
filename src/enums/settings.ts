@@ -20,4 +20,4 @@ const SETTINGS = {
 	},
 };
 
-export { SETTINGS };
+export default SETTINGS;
